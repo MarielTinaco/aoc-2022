@@ -12,34 +12,22 @@ def solve (input):
     instr = input
 
     actual_count_1 = 0
-
-    contain = set([])
-    for char in instr:
-
-        if len(contain) == 4:
-            break
-
-        if char in contain:
-            contain = set([])
-        else:
-            contain.add(char)
-
-        actual_count_1 += 1
-
     actual_count_2 = 0
 
     contain = set([])
-    for char in instr:
+
+    for i, char in enumerate(instr):
+
+        if len(contain) == 4:
+            actual_count_1 = i + 1
 
         if len(contain) == 14:
-            break
+            actual_count_2 = i + 1
 
         if char in contain:
             contain = set([])
         else:
             contain.add(char)
-
-        actual_count_2 += 1
 
 
     ans1 = actual_count_1
