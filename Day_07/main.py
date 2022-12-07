@@ -32,13 +32,12 @@ def solve(input):
     
     ans1 = sum(v for v in file_sizes.values() if v <= 100000)
 
-
     unused_space = file_sizes[Path("C:/")]
     required = 30000000 - (70000000 - unused_space)
 
     ans2 = min(v for v in file_sizes.values() if v >= required)
 
-    return ans2
+    return ans1, ans2
 
 test_input = \
 """$ cd /
@@ -66,8 +65,8 @@ $ ls
 7214296 k
 """
 
-# expected_output = 95437
-expected_output = 24933642
+# expected_output = [None, None]
+expected_output = [95437, 24933642]
 
 @pytest.mark.parametrize(
     ('input_s', 'expected'),
@@ -76,11 +75,12 @@ expected_output = 24933642
     ),
 )
 def test (input_s, expected) -> None:
-    assert solve (input_s) == expected
+    assert solve (input_s) == tuple(expected)
 
 
 if __name__ == "__main__":
     INPUT_TEXT = Path(Path(__file__).parent / "input.txt").read_text()
 
-    ans = solve(INPUT_TEXT)
-    print("Part 2: ", ans)
+    ans, ans2 = solve(INPUT_TEXT)
+    print("Part 1: ", ans)
+    print("Part 2: ", ans2)
