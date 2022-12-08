@@ -17,7 +17,7 @@ def solve(input):
             splitted = line.split(" ")
             if splitted[0] == "$":
                 if splitted[1] == "cd":
-                    current_dir = (current_dir / line[5:]).resolve()
+                    current_dir = (current_dir / splitted[2]).resolve()
 
                 elif splitted[1] == "ls":
                     ...
